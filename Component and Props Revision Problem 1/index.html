@@ -5,7 +5,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Superhero Cards</title>
-  <link rel="stylesheet" href="/Component and Props Revision Problem 1/superHero.css">
+  <style>
+      /* Add your CSS styling here */
+  .superhero-card {
+    border: 5px solid #000000;
+    padding: 20px;
+    margin: 25px;
+    border-radius: 10px;
+    display: inline-block;
+    width: 250px;
+    font-weight: bolder;
+    font-family: Agency FB , sans-serif;
+    box-shadow: rgb(251, 2, 2) 0px 5px 15px;
+  }
+
+  .superhero-card img {
+    width: 25vw;
+    border-radius: 4px;
+    
+    
+  }
+
+  .is-bachelor-true {
+    color: red;
+  }
+
+  .is-bachelor-false {
+    color: green;
+  }
+  h2{
+      font-family: ROG Fonts , sans-serif;  
+  }
+  </style>
 </head>
 
 <body>
@@ -15,7 +46,78 @@
   <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-  <script type="text/babel" src="/Component and Props Revision Problem 1/superHero.js"></script>
+  <script type="text/babel">
+    const SuperheroCard = (props) => {
+    const { name, age, powers, address, isBachelor, imageUrl } = props.superhero;
+
+    return (
+      <div className="superhero-card">
+        <img src={imageUrl} alt={name} />
+        <h2>{name}</h2>
+        <p>Age: {age}</p>
+        <p>Powers: {powers.join(', ')}</p>
+        <p>Address: {address.street}, {address.city}, {address.country}</p>
+        <p className={isBachelor ? 'is-bachelor-true' : 'is-bachelor-false'}>
+          {isBachelor ? 'Bachelor' : 'Not Bachelor'}
+        </p>
+      </div>
+    );
+  };
+
+  function App() {
+    const superheroes = [
+      {
+        name: "Iron Man",
+        powers: ["Rich", "Fly", "Genius"],
+        address: {
+          street: "Avenger Tower St",
+          city: "New York",
+          country: "USA",
+        },
+        age: 38,
+        isBachelor: false,
+        imageUrl:
+          "https://pngimg.com/d/ironman_PNG38.png",
+      },
+      {
+        name: "Spider Man",
+        powers: ["Web shoot", "swing by webs"],
+        address: {
+          street: "Central St",
+          city: "New York",
+          country: "USA",
+        },
+        age: 27,
+        isBachelor: true,
+        imageUrl:
+          "https://pngimg.com/d/spider_man_PNG97.png",
+      },
+      {
+        name: "Optimus Prime",
+        powers: ["Run Fast", "Body Transform", "Heavy Weapons"],
+        address: {
+          street: "America",
+          city: "New York",
+          country: "USA",
+        },
+        age: 55,
+        isBachelor: true,
+        imageUrl:
+          "https://www.pikpng.com/pngl/b/48-488100_seth-rollins-clipart-png-transparent-transformers-optimus-prime.png",
+      },
+    ];
+
+    return (
+      <>
+        {superheroes.map((superhero, index) => (
+          <SuperheroCard key={index} superhero={superhero} />
+        ))}
+      </>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
 </body>
 
 </html>
