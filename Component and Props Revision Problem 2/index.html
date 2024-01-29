@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/babel">
         // Task 1: Basic Component Creation
-const User = ({ name, age, email }) => (
+let User = ({ name, age, email }) => (
     <div>
       <h2>User Information:</h2>
       <p>Name: {name}</p>
@@ -21,7 +21,7 @@ const User = ({ name, age, email }) => (
     </div>
   );
   
-  const ScoreCard = ({ score }) => (
+  let ScoreCard = ({ score }) => (
     <div>
       <h2>Score Card:</h2>
       <p>Score: {score}</p>
@@ -29,14 +29,14 @@ const User = ({ name, age, email }) => (
   );
   
   // Task 2: Container Component with Children Props
-  const ContainerWithBlueBorder = ({ children }) => (
+  let ContainerWithBlueBorder = ({ children }) => (
     <div style={{ border: '2px solid blue', padding: '15px', margin: '15px' }}>
       {children}
     </div>
   );
   
   // Task 3: App Component and Composition
-  const App = () => (
+  let App = () => (
     <div>
       <ContainerWithBlueBorder>
         <User name="John Doe" age="25" email="john@example.com" />
@@ -49,14 +49,14 @@ const User = ({ name, age, email }) => (
   
   // Task 4 (Bonus): Dynamic Container Component
   // Subtask 1
-  const Container = ({ children, borderColor }) => (
+  let Container = ({ children, borderColor }) => (
     <div style={{ border: `2px solid ${borderColor}`, padding: '25px', margin: '25px' }}>
       {children}
     </div>
   );
   
   // Subtask 2 and 3
-  const BonusApp = () => (
+  let BonusApp = () => (
     <div>
       <Container borderColor="red">
         <p>This is a red container.</p>
@@ -73,10 +73,6 @@ const User = ({ name, age, email }) => (
   
   // Render the main App component
   ReactDOM.render(<App />, document.getElementById('root'));
-  
-  // Bonus: Render the BonusApp component in a separate file (index.html).
-  // Uncomment the line below in index.html.
-  // ReactDOM.render(<BonusApp />, document.getElementById('root'));
   
     </script>
 </body>
