@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Boilerplate Code</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Task 1: Basic Component Creation
+const User = ({ name, age, email }) => (
+    <div>
+      <h2>User Information:</h2>
+      <p>Name: {name}</p>
+      <p>Age: {age}</p>
+      <p>Email: {email}</p>
+    </div>
+  );
+  
+  const ScoreCard = ({ score }) => (
+    <div>
+      <h2>Score Card:</h2>
+      <p>Score: {score}</p>
+    </div>
+  );
+  
+  // Task 2: Container Component with Children Props
+  const ContainerWithBlueBorder = ({ children }) => (
+    <div style={{ border: '2px solid blue', padding: '15px', margin: '15px' }}>
+      {children}
+    </div>
+  );
+  
+  // Task 3: App Component and Composition
+  const App = () => (
+    <div>
+      <ContainerWithBlueBorder>
+        <User name="John Doe" age="25" email="john@example.com" />
+      </ContainerWithBlueBorder>
+      <ContainerWithBlueBorder>
+        <ScoreCard score="90" />
+      </ContainerWithBlueBorder>
+    </div>
+  );
+  
+  // Task 4 (Bonus): Dynamic Container Component
+  // Subtask 1
+  const Container = ({ children, borderColor }) => (
+    <div style={{ border: `2px solid ${borderColor}`, padding: '25px', margin: '25px' }}>
+      {children}
+    </div>
+  );
+  
+  // Subtask 2 and 3
+  const BonusApp = () => (
+    <div>
+      <Container borderColor="red">
+        <p>This is a red container.</p>
+      </Container>
+      <Container borderColor="green">
+        <h3>Green Container</h3>
+        <ScoreCard score="85" />
+      </Container>
+      <Container borderColor="blue">
+        <User name="Jane Doe" age="30" email="jane@example.com" />
+      </Container>
+    </div>
+  );
+  
+  // Render the main App component
+  ReactDOM.render(<App />, document.getElementById('root'));
+  
+  // Bonus: Render the BonusApp component in a separate file (index.html).
+  // Uncomment the line below in index.html.
+  // ReactDOM.render(<BonusApp />, document.getElementById('root'));
+  
+    </script>
+</body>
+</html>
